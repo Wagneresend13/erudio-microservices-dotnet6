@@ -20,7 +20,7 @@ namespace RestWithASPNETUdemy.Controllers
         }
 
         [HttpGet("sum/{firstNumber}/{secondNumber}")]
-        public IActionResult Get(string firstNumber, string secondNumber)
+        public IActionResult GetAdicao(string firstNumber, string secondNumber)
         {
             if(isNumeric(firstNumber) && isNumeric(secondNumber))
             {
@@ -28,6 +28,28 @@ namespace RestWithASPNETUdemy.Controllers
                 return Ok(sum.ToString()); 
             }
 
+            return BadRequest("Invalid Imput");
+        }
+
+        [HttpGet("subtracao/{firstNumber}/{secondNumber}")]  
+        public IActionResult Getsubtracaoo(string firstNumber,string secondNumber)
+        {
+            if (isNumeric(firstNumber) && isNumeric(secondNumber))
+            {
+                var subtracao = ConvertToDecimal(firstNumber) - ConvertToDecimal(secondNumber);
+                return Ok(subtracao.ToString());
+            }
+            return BadRequest("Invalid Imput");
+        }
+
+        [HttpGet("divisao/{firstNumber}/{secondNumber}")]
+        public IActionResult GetDivisao(string firstNumber, string secondNumber)
+        {
+            if (isNumeric(firstNumber) && isNumeric(secondNumber))
+            {
+                var divisao = ConvertToDecimal(firstNumber) / ConvertToDecimal(secondNumber);
+                return Ok(divisao.ToString());
+            }
             return BadRequest("Invalid Imput");
         }
 
